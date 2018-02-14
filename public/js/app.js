@@ -45179,6 +45179,34 @@ var Main = function (_Component) {
             });
         }
     }, {
+        key: 'handleUpdate',
+        value: function handleUpdate(product) {
+            var _this5 = this;
+
+            var currentProduct = this.state.currentProduct;
+            fetch('api/products/' + currentProduct.id, {
+                method: 'put',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(product)
+            }).then(function (response) {
+                return response.json();
+            }).then(function (data) {
+                /* Updating the state */
+                var array = _this5.state.products.filter(function (item) {
+                    return item !== currentProduct;
+                });
+                _this5.setState(function (prevState) {
+                    return {
+                        products: array.concat(product),
+                        currentProduct: product
+                    };
+                });
+            });
+        }
+    }, {
         key: 'render',
         value: function render() {
             return (
@@ -57782,6 +57810,23 @@ var Product = function Product(_ref) {
 };
 
 /* harmony default export */ __webpack_exports__["a"] = (Product);
+
+/*
+handleDelete() {
+
+    const currentProduct = this.state.currentProduct;
+    fetch( 'api/products/' + this.state.currentProduct.id,
+        { method: 'delete' })
+        .then(response => {
+
+            var array = this.state.products.filter(function(item) {
+                return item !== currentProduct
+            });
+
+            this.setState({ products: array, currentProduct: null});
+
+        });
+}*/
 
 /***/ }),
 /* 225 */

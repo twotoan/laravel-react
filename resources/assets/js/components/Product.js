@@ -26,3 +26,21 @@ const Product = ({product}) => {
 }
 
 export default Product;
+
+
+/*
+handleDelete() {
+
+    const currentProduct = this.state.currentProduct;
+    fetch( 'api/products/' + this.state.currentProduct.id,
+        { method: 'delete' })
+        .then(response => {
+
+            var array = this.state.products.filter(function(item) {
+                return item !== currentProduct
+            });
+
+            this.setState({ products: array, currentProduct: null});
+
+        });
+}*/
