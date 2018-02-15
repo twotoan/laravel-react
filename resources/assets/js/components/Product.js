@@ -14,6 +14,8 @@ const Product = ({product}) => {
         return (<div style={divStyle}> Product Doesn't exist </div>);
     }
 
+
+
     //Else, display the product data
     return (
         <div style={divStyle}>
@@ -21,26 +23,9 @@ const Product = ({product}) => {
             <p> {product.description} </p>
             <h3> Status {product.availability ? 'Available' : 'Out of stock'} </h3>
             <h3> Price : {product.price} </h3>
+
         </div>
     )
 }
 
 export default Product;
-
-
-/*
-handleDelete() {
-
-    const currentProduct = this.state.currentProduct;
-    fetch( 'api/products/' + this.state.currentProduct.id,
-        { method: 'delete' })
-        .then(response => {
-
-            var array = this.state.products.filter(function(item) {
-                return item !== currentProduct
-            });
-
-            this.setState({ products: array, currentProduct: null});
-
-        });
-}*/

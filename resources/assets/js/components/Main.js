@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import Product from './Product';
 import AddProduct from './AddProduct';
+import UpdateProduct from './UpdateProduct';
 
 /* Main Component */
 class Main extends Component {
@@ -76,12 +77,11 @@ class Main extends Component {
     }
 
 
-
     handleUpdate(product) {
 
         const currentProduct = this.state.currentProduct;
-        fetch( 'api/products/' + currentProduct.id, {
-            method:'put',
+        fetch('api/products/' + currentProduct.id, {
+            method: 'put',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
@@ -91,17 +91,19 @@ class Main extends Component {
             .then(response => {
                 return response.json();
             })
-            .then( data => {
+            .then(data => {
                 /* Updating the state */
-                var array = this.state.products.filter(function(item) {
+                var array = this.state.products.filter(function (item) {
                     return item !== currentProduct
                 })
-                this.setState((prevState)=> ({
+                this.setState((prevState) => ({
                     products: array.concat(product),
-                    currentProduct : product
+                    currentProduct: product
                 }))
             })
     }
+
+
 
     render() {
         return (
@@ -116,6 +118,7 @@ class Main extends Component {
 
                 <Product product={this.state.currentProduct}/>
                 <AddProduct onAdd={this.handleAddProduct}/>
+                <DeleteProduct onAdd={this.handleDelete}/>
             </div>
         );
     }

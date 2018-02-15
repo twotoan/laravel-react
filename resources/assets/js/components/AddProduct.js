@@ -50,7 +50,7 @@ class AddProduct extends Component {
                      */
                     <form onSubmit={this.handleSubmit}>
                         <label> Title:
-                            { /*On every keystroke, the handeInput method is invoked */ }
+                            { /*On every keystroke, the handleInput method is invoked */ }
                             <input type="text" onChange={(e)=>this.handleInput('title',e)} />
                         </label>
 
